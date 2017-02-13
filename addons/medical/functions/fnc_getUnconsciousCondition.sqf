@@ -13,16 +13,15 @@
 
 #include "script_component.hpp"
 
-private ["_unit","_return"];
 params ["_unit"];
 
 if (isnil QGVAR(unconsciousConditions)) then {
     GVAR(unconsciousConditions) = [];
 };
 
-_return = false;
+private _return = false;
 {
-    if (typeName _x == typeName {} && {([_unit] call _x)}) exitwith {
+    if ((_x isEqualType {}) && {([_unit] call _x)}) exitwith {
        _return = true;
     };
 } foreach GVAR(unconsciousConditions);

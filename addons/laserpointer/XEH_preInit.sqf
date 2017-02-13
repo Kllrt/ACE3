@@ -2,8 +2,8 @@
 
 ADDON = false;
 
-PREP(drawLaserpoint);
-PREP(onDraw);
-PREP(switchLaserLightMode);
+PREP_RECOMPILE_START;
+#include "XEH_PREP.hpp"
+PREP_RECOMPILE_END;
 
 ADDON = true;

@@ -50,7 +50,7 @@ if !(_rotorWash select 0) exitWith {
             if (GVAR(DustHandler) == -1) then {
                 GVAR(PostProcessEyes) ppEffectEnable false;
             }
-        }, [], 2] call EFUNC(common,waitAndExecute);
+        }, [], 2] call CBA_fnc_waitAndExecute;
 
         [GVAR(DustHandler)] call CBA_fnc_removePerFrameHandler;
         GVAR(DustHandler) = -1;
@@ -86,7 +86,7 @@ if (_safe) exitWith {};
 
 // apply rotor wash effect
 if (_rotorWash select 1 > 0) then {
-    local _scale = 0.7;
+    private _scale = 0.7;
 
     if (_rotorWash select 1 > 0) then {
         _scale = CLAMP(0.3 * (_rotorWash select 1),0.1,0.3);

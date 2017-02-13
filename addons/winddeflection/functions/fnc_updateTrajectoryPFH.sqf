@@ -18,12 +18,12 @@
 
 [{
     // BEGIN_COUNTER(pfeh);
-    private["_accel", "_accelRef", "_bulletSpeed", "_bulletVelocity", "_deleted", "_deltaT", "_drag", "_dragRef", "_isWind", "_trueSpeed", "_trueVelocity"];
+    private ["_accel", "_accelRef", "_bulletSpeed", "_bulletVelocity", "_deleted", "_deltaT", "_drag", "_dragRef", "_isWind", "_trueSpeed", "_trueVelocity"];
 
     params ["_args"];
     _args params ["_lastTime"];
-    _deltaT = ACE_time - _lastTime;
-    _args set [0, ACE_time];
+    _deltaT = CBA_missionTime - _lastTime;
+    _args set [0, CBA_missionTime];
     _deleted = 0;
     _isWind = (vectorMagnitude ACE_wind > 0);
 
@@ -34,8 +34,7 @@
         _bulletSpeed = vectorMagnitude _bulletVelocity;
 
         if ((!alive _bullet) || {(_bullet isKindOf "BulletBase") && {_bulletSpeed < 100}}) then {
-            GVAR(trackedBullets) deleteAt (_forEachIndex - _deleted);
-            _deleted = _deleted + 1;
+            GVAR(trackedBullets) deleteAt (GVAR(trackedBullets) find _x);
         } else {
             if (_isWind) then {
                 _trueVelocity = _bulletVelocity vectorDiff ACE_wind;
@@ -51,7 +50,7 @@
             };
             _bullet setVelocity _bulletVelocity;
         };
-
-    } forEach GVAR(trackedBullets);
+        nil
+    } count +GVAR(trackedBullets);
     // END_COUNTER(pfeh);
-}, GVAR(simulationInterval), [ACE_time]] call CBA_fnc_addPerFrameHandler;
+}, GVAR(simulationInterval), [CBA_missionTime]] call CBA_fnc_addPerFrameHandler;

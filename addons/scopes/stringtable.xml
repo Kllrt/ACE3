@@ -1,6 +1,82 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACE">
     <Package name="Scopes">
+        <Key ID="STR_ACE_Scopes_DisplayName">
+            <English>Scopes</English>
+            <Japanese>スコープ</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_enabled_displayName">
+            <English>Enable ACE Scope adjustment</English>
+            <Japanese>ACE スコープ調節を有効化</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_enabled_description">
+            <English>Enable adjustmet turrets on high powered scopes</English>
+            <Japanese>高倍率スコープでACE スコープ調節を有効化</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_forceUseOfAdjustmentTurrets_displayName">
+            <English>Force adjustment turrets</English>
+            <Japanese>ACE スコープ調節を有効化</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_forceUseOfAdjustmentTurrets_description">
+            <English>Force usage of adjustmet turrets on high powered scopes</English>
+            <Japanese>高倍率スコープで調整の使用を強制させます</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_correctZeroing_displayName">
+            <English>Correct zeroing</English>
+            <Japanese>ゼロイン調節</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_correctZeroing_description">
+            <English>Corrects the zeroing of all small arms sights</English>
+            <Japanese>全ての小口径用照準器のゼロインを調節します</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_overwriteZeroRange_displayName">
+            <English>Overwrite zero distance</English>
+            <Japanese>ゼロイン距離を上書き</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_overwriteZeroRange_Description">
+            <English>Uses the 'defaultZeroRange' setting to overwrite the zero range of high power scopes</English>
+            <Japanese>'defaultZeroRange'設定を使う高倍率スコープのゼロイン距離を上書きします</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_defaultZeroRange_displayName">
+            <English>Default zero distance</English>
+            <Japanese>標準のゼロイン距離</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_defaultZeroRange_description">
+            <English>High power scopes will be zeroed at this distance</English>
+            <Japanese>高倍率スコープのゼロイン距離はこの設定になります</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_zeroReferenceTemperature_displayName">
+            <English>Reference temperature</English>
+            <Japanese>温度の参照</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_zeroReferenceTemperature_description">
+            <English>Temperature at which the scope was zeroed</English>
+            <Japanese>スコープがゼロインされる温度</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_zeroReferenceBarometricPressure_displayName">
+            <English>Reference barometric pressure</English>
+            <Japanese>気圧の参照</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_zeroReferenceBarometricPressure_description">
+            <English>Barometric pressure at which the scope was zeroed</English>
+            <Japanese>気圧の参照</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_zeroReferenceHumidity_displayName">
+            <English>Reference humidity</English>
+            <Japanese>湿度の参照</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_zeroReferenceHumidity_description">
+            <English>Humidity at which the scope was zeroed</English>
+            <Japanese>スコープがゼロインされる湿度</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_deduceBarometricPressureFromTerrainAltitude_displayName">
+            <English>Deduce pressure from altitude</English>
+            <Japanese>高度により圧が減少</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_deduceBarometricPressureFromTerrainAltitude_description">
+            <English>Deduce the barometric pressure from the terrain altitude</English>
+            <Japanese>標高により気圧が減少されます</Japanese>
+        </Key>
         <Key ID="STR_ACE_Scopes_AdjustUpMinor">
             <English>Minor adjustment up</English>
             <Polish>Zerowanie powoli w górę</Polish>
@@ -11,7 +87,8 @@
             <German>Kleine Korrektur nach oben</German>
             <Hungarian>Enyhe állítás fel</Hungarian>
             <Portuguese>Pequeno ajuste para cima</Portuguese>
-            <Czech>Korekce mírně nahoru</Czech>
+            <Czech>Korekce nahoru (mírně)</Czech>
+            <Japanese>僅かに上へ調節</Japanese>
         </Key>
         <Key ID="STR_ACE_Scopes_AdjustDownMinor">
             <English>Minor adjustment down</English>
@@ -23,7 +100,8 @@
             <German>Kleine Korrektur nach unten</German>
             <Hungarian>Enyhe állítás le</Hungarian>
             <Portuguese>Pequeno ajuste para baixo</Portuguese>
-            <Czech>Korekce mírně dolů</Czech>
+            <Czech>Korekce dolů (mírně)</Czech>
+            <Japanese>僅かに下へ調節</Japanese>
         </Key>
         <Key ID="STR_ACE_Scopes_AdjustRightMinor">
             <English>Minor adjustment right</English>
@@ -35,7 +113,8 @@
             <German>Kleine Korrektur nach rechts</German>
             <Hungarian>Enyhe állítás jobbra</Hungarian>
             <Portuguese>Pequeno ajuste para direita</Portuguese>
-            <Czech>Korekce mírně doprava</Czech>
+            <Czech>Korekce doprava (mírně)</Czech>
+            <Japanese>僅かに右へ調節</Japanese>
         </Key>
         <Key ID="STR_ACE_Scopes_AdjustLeftMinor">
             <English>Minor adjustment left</English>
@@ -47,7 +126,8 @@
             <German>Kleine Korrektur nach links</German>
             <Hungarian>Enyhe állítás balra</Hungarian>
             <Portuguese>Pequeno ajuste para esquerda</Portuguese>
-            <Czech>Korekce mírně doleva</Czech>
+            <Czech>Korekce doleva (mírně)</Czech>
+            <Japanese>僅かに左へ調節</Japanese>
         </Key>
         <Key ID="STR_ACE_Scopes_AdjustUpMajor">
             <English>Major adjustment up</English>
@@ -60,6 +140,7 @@
             <Hungarian>Nagy állítás fel</Hungarian>
             <Portuguese>Ajuste grande para cima</Portuguese>
             <Czech>Korekce nahoru</Czech>
+            <Japanese>大きく上へ調節</Japanese>
         </Key>
         <Key ID="STR_ACE_Scopes_AdjustDownMajor">
             <English>Major adjustment down</English>
@@ -67,11 +148,12 @@
             <Russian>Большая корректировка ВНИЗ</Russian>
             <Spanish>Ajuste mayor abajo</Spanish>
             <Italian>Regola l'alzata in basso</Italian>
-            <French>Hausse ---</French>
+            <French>Hausse - - -</French>
             <German>Große Korrektur nach unten</German>
             <Hungarian>Nagy állítás le</Hungarian>
             <Portuguese>Ajuste grande para baixo</Portuguese>
             <Czech>Korekce dolů</Czech>
+            <Japanese>大きく下へ調節</Japanese>
         </Key>
         <Key ID="STR_ACE_Scopes_AdjustRightMajor">
             <English>Major adjustment right</English>
@@ -84,6 +166,7 @@
             <Hungarian>Nagy állítás jobbra</Hungarian>
             <Portuguese>Ajuste grande para direita</Portuguese>
             <Czech>Korekce doprava</Czech>
+            <Japanese>大きく右へ調節</Japanese>
         </Key>
         <Key ID="STR_ACE_Scopes_AdjustLeftMajor">
             <English>Major adjustment left</English>
@@ -91,11 +174,12 @@
             <Russian>Большая корректировка ВЛЕВО</Russian>
             <Spanish>Ajuste mayor izquierda</Spanish>
             <Italian>Regola il tiro a sinistra</Italian>
-            <French>Dérive ---</French>
+            <French>Dérive - - -</French>
             <German>Große Korrektur nach links</German>
             <Hungarian>Nagy állítás balra</Hungarian>
             <Portuguese>Ajuste grande para esquerda</Portuguese>
             <Czech>Korekce doleva</Czech>
+            <Japanese>大きく左へ調節</Japanese>
         </Key>
         <Key ID="STR_ACE_Scopes_AdjustZero">
             <English>Set zero adjustment</English>
@@ -108,6 +192,11 @@
             <Hungarian>Állítások nullázása</Hungarian>
             <Portuguese>Zerar ajuste</Portuguese>
             <Czech>Vynulovat korekci</Czech>
+            <Japanese>ゼロインを調節</Japanese>
+        </Key>
+        <Key ID="STR_ACE_Scopes_Description">
+            <English>This module adds windage and elevation adjustment turrets on high power rifle scopes.</English>
+            <Japanese>モジュールは高倍率ライフル スコープにおいて横風と仰角の調節ができます。</Japanese>
         </Key>
     </Package>
 </Project>

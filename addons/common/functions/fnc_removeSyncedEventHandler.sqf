@@ -14,15 +14,13 @@
 
 params ["_name"];
 
-if (!HASH_HASKEY(GVAR(syncedEvents),_name)) exitWith {
-    ACE_LOGERROR("Synced event key not found.");
+if !([GVAR(syncedEvents), _name] call CBA_fnc_hashHasKey) exitWith {
+    ERROR_1("Synced event key [%1] not found (removeSyncedEventHandler).", _name);
     false
 };
 
-private ["_data", "_eventId"];
+private _data = [GVAR(syncedEvents), _name] call CBA_fnc_hashGet;
+_data params ["", "", "", "_eventId"];
 
-_data = HASH_GET(GVAR(syncedEvents),_name);
-_eventId = _data select 3;
-
-[_eventId] call FUNC(removeEventHandler);
-HASH_REM(GVAR(syncedEvents),_name);
+[_eventId] call CBA_fnc_removeEventHandler;
+[GVAR(syncedEvents), _name] call CBA_fnc_hashRem;

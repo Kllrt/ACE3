@@ -14,7 +14,6 @@
 
 #include "script_component.hpp"
 
-private ["_amount", "_item", "_log", "_message", "_triageCardTexts", "_triageStatus"];
 params ["_target", ["_show", true]];
 
 GVAR(TriageCardTarget) = if (_show) then {_target} else {ObjNull};
@@ -24,29 +23,28 @@ if (_show) then {
     createDialog QGVAR(triageCard);
 
     [{
-        private ["_target", "_display", "_alphaLevel", "_alphaLevel", "_lbCtrl"];
         params ["_args", "_idPFH"];
         _args params ["_target"];
-        if (GVAR(TriageCardTarget) != _target) exitwith {
+        if (GVAR(TriageCardTarget) != _target) exitWith {
             [_idPFH] call CBA_fnc_removePerFrameHandler;
         };
 
         disableSerialization;
-        _display = uiNamespace getvariable QGVAR(triageCard);
-        if (isnil "_display") exitwith {
+        private _display = uiNamespace getVariable QGVAR(triageCard);
+        if (isNil "_display") exitWith {
             [_idPFH] call CBA_fnc_removePerFrameHandler;
         };
 
-        _triageCardTexts = [];
+        private _triageCardTexts = [];
 
         // TODO fill the lb with the appropiate information for the patient
-        _lbCtrl = (_display displayCtrl 200);
+        private _lbCtrl = (_display displayCtrl 200);
         lbClear _lbCtrl;
 
-        _log = _target getvariable [QGVAR(triageCard), []];
+        private _log = _target getVariable [QGVAR(triageCard), []];
         {
             _x params ["_item", "_amount"];
-            _message = _item;
+            private _message = _item;
             if (isClass(configFile >> "CfgWeapons" >> _item)) then {
                 _message = getText(configFile >> "CfgWeapons" >> _item >> "DisplayName");
             } else {
@@ -54,18 +52,17 @@ if (_show) then {
                     _message = localize _message;
                 };
             };
-            _triageCardTexts pushback format["%1x - %2", _amount, _message];
-        } foreach _log;
+            _triageCardTexts pushBack format["%1x - %2", _amount, _message];
+        } forEach _log;
 
         if (count _triageCardTexts == 0) then {
             _lbCtrl lbAdd (localize LSTRING(TriageCard_NoEntry));
         };
         {
             _lbCtrl lbAdd _x;
-        } foreach _triageCardTexts;
+        } forEach _triageCardTexts;
 
-        _triageStatus = [_target] call FUNC(getTriageStatus);
-
+        private _triageStatus = [_target] call FUNC(getTriageStatus);
         _triageStatus params ["_text", "", "_color"];
 
         (_display displayCtrl 2000) ctrlSetText _text;

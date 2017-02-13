@@ -15,7 +15,6 @@
  */
 #include "script_component.hpp"
 
-if (GVAR(showInThirdPerson)) exitWith {false};
 if (call FUNC(externalCamera)) exitWith {false};
 
 private ["_unit", "_effects"];
@@ -28,11 +27,15 @@ _effects set [DIRT, true];
 SETGLASSES(_unit,_effects);
 
 if ([_unit] call FUNC(isGogglesVisible)) then {
-    local _dirtImage = getText (configFile >> "CfgGlasses" >> goggles _unit >> "ACE_OverlayDirt");
+    private _dirtImage = getText (configFile >> "CfgGlasses" >> goggles _unit >> "ACE_OverlayDirt");
 
     if (_dirtImage != "") then {
         GVAR(GogglesEffectsLayer) cutRsc ["RscACE_GogglesEffects", "PLAIN", 0.1, false];
         (GETUVAR(GVAR(DisplayEffects),displayNull) displayCtrl 10660) ctrlSetText _dirtImage;
+
+        private _effectBrightness = linearConversion [0,1,([] call EFUNC(common,ambientBrightness)),0.25,1];
+        (GETUVAR(GVAR(DisplayEffects),displayNull) displayCtrl 10660) ctrlSetTextColor [_effectBrightness, _effectBrightness, _effectBrightness, 1];
+        TRACE_1("dirt",_effectBrightness);
     };
 };
 

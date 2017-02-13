@@ -14,14 +14,11 @@
 
 params ["_client"];
 
-{
-    private ["_eventEntry", "_eventLog"];
+[GVAR(syncedEvents), {
+    _value params ["", "_eventLog"];
 
-    _eventEntry = HASH_GET(GVAR(syncedEvents),_x);
-    _eventLog = _eventEntry select 1;
-
-    ["SEH_s", _client, [_x, _eventLog]] call FUNC(targetEvent);
+    ["ACEs", [_key, _eventLog], _client] call CBA_fnc_targetEvent;
     false
-} count (GVAR(syncedEvents) select 0);
+}] call CBA_fnc_hashEachPair;
 
 true

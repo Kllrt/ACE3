@@ -2,11 +2,11 @@
  * Author: CAA-Picard
  * Check if the player can check the ammo of the target.
  *
- * Argument:
+ * Arguments:
  * 0: Unit <OBJECT>
  * 1: Target <OBJECT>
  *
- * Return value:
+ * Return Value:
  * Can link belt<BOOL> 
  *
  * Example:
@@ -25,7 +25,7 @@ if (_target isKindOf "StaticWeapon") exitWith {
     // no check ammo action on destroyed static weapons
     if (!alive _target) exitWith {false};
 
-    local _found = false;
+    private _found = false;
 
     {
         if (_x select 2) exitWith {

@@ -4,7 +4,7 @@
  *
  * Arguments:
  * 0: The Unit <OBJECT>
- * 1: Change in brightness (1 or -1) <SCALAR>
+ * 1: Change in brightness (1 or -1) <NUMBER>
  *
  * Return Value:
  * Nothing
@@ -19,11 +19,9 @@
 params ["_player", "_changeInBrightness"];
 TRACE_2("params",_player,_changeInBrightness);
 
-private ["_brightness"];
-
 if (!hasInterface) exitWith {};
 
-_brightness = _player getVariable [QGVAR(NVGBrightness), 0];
+private _brightness = _player getVariable [QGVAR(NVGBrightness), 0];
 
 _brightness = ((round (10 * _brightness + _changeInBrightness) / 10) min 0.5) max -0.5;
 

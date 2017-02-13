@@ -5,7 +5,7 @@
  * Arguments [Client] :
  * 0: eventName <STRING>
  * 1: arguments <ARRAY>
- * 2: ttl <SCALAR>
+ * 2: ttl <NUMBER>
  *
  * Return Value:
  * Boolean of success <BOOL>
@@ -16,25 +16,19 @@
 
 params ["_name", "_args", "_ttl"];
 
-if (!HASH_HASKEY(GVAR(syncedEvents),_name)) exitWith {
-    ACE_LOGERROR("Synced event key not found.");
+if !([GVAR(syncedEvents), _name] call CBA_fnc_hashHasKey) exitWith {
+    ERROR_1("Synced event key [%1] not found (_handleSyncedEvent).", _name);
     false
 };
 
-private ["_internalData", "_eventCode"];
-
-_internalData = HASH_GET(GVAR(syncedEvents),_name);
+private _internalData = [GVAR(syncedEvents), _name] call CBA_fnc_hashGet;
+_internalData params ["_eventCode", "_eventLog"];
 
 if (isServer) then {
     // Server needs to internally log it for synchronization
     if (_ttl > -1) then {
-        _internalData = HASH_GET(GVAR(syncedEvents),_name);
-
-        private "_eventLog";
-        _eventLog = _internalData select 1;
-        _eventLog pushback [ACE_diagTime, _args, _ttl];
+        _eventLog pushBack [diag_tickTime, _args, _ttl];
     };
 };
 
-_eventCode = _internalData select 0;
 _args call _eventCode;
